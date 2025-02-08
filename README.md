@@ -1,2 +1,3 @@
-# yandex_practicum_final_project
-Yandex Practicum QA Course Final project
+﻿# Тест на проверку возможности взятия заказа по его трекеру для сервиса Яндекс.Самокат
+- Для запуска тестов должны быть установлены пакеты pytest и requests
+- Запуск всех тестов выполняется командой pytest
