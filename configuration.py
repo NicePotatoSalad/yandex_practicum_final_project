@@ -1,6 +1,6 @@
 # LINKS
 
-URL_SERVICE = "https://6bfe8410-0a89-42af-99a2-0c8dac097c85.serverhub.praktikum-services.ru"
+URL_SERVICE = "https://325427b6-60a8-43d7-b67b-b0fe1b1612c7.serverhub.praktikum-services.ru"
 
 DOC_PATH = "/docs/"
 

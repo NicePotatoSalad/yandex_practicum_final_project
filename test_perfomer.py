@@ -1,24 +1,14 @@
-import configuration
+# Григорий Климанов, 26-я когорта — Финальный проект. Инженер по тестированию плюс
+
+import sender_stand_request as SSR
 import data
-
-import requests
-
-def create_courier(body):
-    return requests.post(configuration.URL_SERVICE + configuration.CREATE_COURIER_PATH,
-                         json=body)
-
-def create_order(body):
-    return requests.post(configuration.URL_SERVICE + configuration.CREATE_ORDER_PATH, 
-                         json=body)
 
 def test_order_can_be_taken_using_tracker():
     # Создание курьера
-    courier_response = create_courier(data.CREATE_COURIER_BODY)
-    assert courier_response.status_code == 201, 'Courier was not made' 
+    SSR.create_courier(data.CREATE_COURIER_BODY)
 
     # Создание заказа
-    order_response = create_order(data.CREATE_ORDER_BODY)
-    assert order_response.status_code == 201, 'Order was not made'
+    order_response = SSR.create_order(data.CREATE_ORDER_BODY)
 
     # Работа с заказом
     order_track = order_response.json()['track']
@@ -26,6 +16,6 @@ def test_order_can_be_taken_using_tracker():
     take_order_body['t'] = str(order_track)
     
     # Принятие заказа
-    take_order_response = requests.get(configuration.URL_SERVICE + configuration.TAKE_ORDER_BY_TRACK,
-                                        params=take_order_body)
+    take_order_response = SSR.take_order(take_order_body)
+    
     assert take_order_response.status_code == 200, 'Order was not taken'
